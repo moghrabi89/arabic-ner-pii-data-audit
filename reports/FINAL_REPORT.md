@@ -16,10 +16,12 @@ Accordingly, this report separates directly measured dataset facts from model-ca
 |---|---|---|---|
 | unimelb-nlp/wikiann | Dataset | DIRECTLY_MEASURED | Arabic and English NER analysis |
 | MutazYoune/Arabic-NER-PII | Model | MODEL_ONLY | Points to a declared Arabic PII training dataset |
-| Maqsam/ArabicPIIRedaction | Declared training dataset | NOT_DIRECTLY_ACCESSIBLE | Analyzed only if direct access succeeds |
+| Maqsam/ArabicPIIRedaction as dataset namespace | Declared by model card | NOT_DIRECTLY_ACCESSIBLE | No public dataset rows were returned by the Hub dataset API |
+| Maqsam/ArabicPIIRedaction public Space | Competition Space | REACHABLE | Public repo files: .gitattributes, Dockerfile, README.md — no raw corpus file is exposed in the Space repository |
 | contriqx-Hub/arabic-pii-guardrail | Model | MODEL_ONLY | Taxonomy and intent-classifier context, not raw NER examples |
 
 **Maqsam access evidence:** DatasetNotFoundError: Dataset 'Maqsam/ArabicPIIRedaction' doesn't exist on the Hub or cannot be accessed.
+**Space verification:** the public Maqsam/ArabicPIIRedaction Space is reachable, but its repository contains only .gitattributes, Dockerfile, README.md; therefore it is not a substitute for the missing raw training corpus.
 
 ## 2. Sentence-length distributions and Normality
 
@@ -80,6 +82,10 @@ Ten random training rows cannot be truthfully printed because the underlying row
 
 Qualitative interpretation: WikiANN is Wikipedia-derived NER material, not conversational PII text. Short fragments, title-like snippets and Wikipedia artifacts can therefore appear even when the annotation is structurally valid. This domain difference matters for a future model intended for chats, forms or personal-data redaction.
 
+**Manual sample-quality findings:** the deterministic Arabic sample includes cases such as كتلة شمسية and نصف قطر شمسي labeled ORG, and وسائل تواصل اجتماعي labeled ORG; the English sample includes West Hartford, CT labeled ORG and song titles labeled ORG. These are semantically questionable labels and are concrete evidence of silver-standard annotation noise rather than merely a theoretical risk.
+
+A second Arabic-specific artifact is very large: **20191 of 40000 rows (50.477%) begin with تحويل**. This strongly indicates Wikipedia redirect/title-style material and means the Arabic subset is not representative of ordinary natural prose.
+
 ## 4. Labels and PII coverage
 
 ### WikiANN Arabic BIO label distribution
@@ -108,6 +114,8 @@ Qualitative interpretation: WikiANN is Wikipedia-derived NER material, not conve
 
 WikiANN has seven BIO labels but only three semantic entity classes: **PER, ORG and LOC**.
 
+At the semantic entity-start level, WikiANN is comparatively balanced: Arabic LOC/ORG/PER counts are {'LOC': 15415, 'ORG': 14408, 'PER': 15204} (max/min ratio 1.070), and English counts are {'ORG': 18844, 'LOC': 18836, 'PER': 18355} (max/min ratio 1.027). The bigger imbalance concern is therefore O versus entity tokens and domain/annotation quality, not severe PER/ORG/LOC scarcity.
+
 | PII or entity category | WikiANN |
 |---|---|
 | Person name | Yes — PER |
@@ -135,8 +143,8 @@ The card describes PHONE, EMAIL, SOCIAL_MEDIA, IBAN, ADDRESS, URL, CREDIT_CARD, 
 
 - Arabic O-token share: **40.926%**.
 - English O-token share: **50.760%**.
-- Arabic exact duplicate rows across all splits combined: **6985**.
-- English exact duplicate rows across all splits combined: **1145**.
+- Arabic exact duplicate rows across all splits combined: **6985 (17.462%)**.
+- English exact duplicate rows across all splits combined: **1145 (2.863%)**.
 - Arabic annotation-length mismatches: **0**.
 - English annotation-length mismatches: **0**.
 - Arabic BIO transition anomalies: **0**.
@@ -144,14 +152,15 @@ The card describes PHONE, EMAIL, SOCIAL_MEDIA, IBAN, ADDRESS, URL, CREDIT_CARD, 
 - Arabic long-length IQR outliers: **2342 (5.855%)**.
 - English long-length IQR outliers: **3402 (8.505%)**.
 - Arabic rows containing both Arabic and Latin-script letters: **4.513%**.
+- Arabic redirect-like rows beginning with تحويل: **20191 (50.477%)**.
 
 ### Cross-split exact-overlap audit
 
-| Pair | Arabic overlap | English overlap |
-|---|---:|---:|
-| test__train | 1454 | 226 |
-| validation__test | 911 | 139 |
-| validation__train | 1387 | 257 |
+| Pair | Arabic overlap | Arabic % of smaller unique split | English overlap | English % of smaller unique split |
+|---|---:|---:|---:|---:|
+| test__train | 1454 | 15.645% | 226 | 2.286% |
+| validation__test | 911 | 9.802% | 139 | 1.406% |
+| validation__train | 1387 | 14.884% | 257 | 2.599% |
 
 Any non-zero exact train-validation-test overlap is an evaluation-leakage warning and should be resolved before final model benchmarking.
 
@@ -168,7 +177,7 @@ Any non-zero exact train-validation-test overlap is an evaluation-leakage warnin
 
 | Resource | Status for future Arabic token-level NER/PII training | Why |
 |---|---|---|
-| WikiANN Arabic | **LIMITED / USEFUL AUXILIARY** | Good PER/ORG/LOC Arabic NER signal, but incomplete PII taxonomy and Wikipedia domain mismatch. |
+| WikiANN Arabic | **LIMITED / USEFUL AUXILIARY** | Good PER/ORG/LOC signal, but incomplete PII taxonomy, high exact duplication/split overlap, 50% redirect-like rows, questionable silver labels and Wikipedia domain mismatch. |
 | WikiANN English | **AUXILIARY / MULTILINGUAL CONTROL** | Useful for English comparison and multilingual experiments, not the core Arabic PII corpus. |
 | Maqsam/ArabicPIIRedaction | **UNVERIFIED / ACCESS-BLOCKED** | The model card is promising, but the raw rows were not directly auditable in this execution. |
 | arabic-pii-guardrail | **NOT A DIRECT NER DATASET** | Useful later as a second-stage sharing-intent signal or taxonomy reference, not as supplied token-boundary training data. |
