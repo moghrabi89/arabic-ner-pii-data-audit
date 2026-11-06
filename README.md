@@ -15,13 +15,18 @@ The supplied URLs are not equivalent:
 - `contriqx-Hub/arabic-pii-guardrail` is an intent-classification model, not a token-level NER dataset. Its training-data claims are kept separate from directly measured dataset facts.
 
 ## Reproducibility
-The GitHub Actions workflow installs the pinned analysis stack, loads accessible Hugging Face datasets, runs the audit, writes figures/tables/JSON/Markdown, and commits generated outputs back to the repository.
+The GitHub Actions workflow installs an exact top-level dependency set captured from the last successful reproducible run, loads accessible Hugging Face datasets, runs the audit, writes figures/tables/JSON/Markdown, and commits generated outputs back to the repository.
 
 ## Evidence rule
 Model-card claims are reported as **documented claims** unless the underlying training data is accessible and independently measured. Unavailable evidence remains **UNKNOWN / NOT DIRECTLY VERIFIABLE**.
 
 ## Structure
-- `src/analyze.py` — end-to-end analysis.
+- `src/main.py` — end-to-end orchestrator.
+- `src/common.py` — shared statistics, plotting, normalization, and BIO checks.
+- `src/wikiann.py` — WikiANN Arabic/English audit.
+- `src/sources.py` — Hugging Face source qualification and declared-dataset access checks.
+- `src/report.py` — evidence-linked report generation.
+- `tests/` — lightweight deterministic unit tests for core helpers.
 - `results/` — generated machine-readable outputs.
 - `figures/` — generated plots.
 - `reports/FINAL_REPORT.md` — generated technical report.
@@ -29,3 +34,8 @@ Model-card claims are reported as **documented claims** unless the underlying tr
 - `.github/workflows/run-analysis.yml` — reproducible execution.
 
 Seed: `42`.
+
+
+## Canonical citation
+
+WikiANN / PAN-X is used here as the directly measured multilingual NER corpus. For academic work, cite the dataset card and its referenced original publication rather than treating this repository as the dataset source.
