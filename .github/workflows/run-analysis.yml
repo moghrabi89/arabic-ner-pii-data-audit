@@ -8,6 +8,7 @@ on:
       - "src/**"
       - "tests/**"
       - "requirements.txt"
+      - "requirements-lock.txt"
       - ".github/workflows/run-analysis.yml"
   workflow_dispatch:
 
@@ -37,7 +38,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install -r requirements-lock.txt
 
       - name: Syntax gate
         run: python -m py_compile src/*.py
