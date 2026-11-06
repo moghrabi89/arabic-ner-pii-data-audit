@@ -72,6 +72,25 @@ def qualify_sources():
                 "reachable": False,
                 "error": type(exc).__name__ + ": " + str(exc)[:600],
             }
+    try:
+        space = api.space_info("Maqsam/ArabicPIIRedaction")
+        space_files = api.list_repo_files("Maqsam/ArabicPIIRedaction", repo_type="space")
+        out["sources"]["Maqsam/ArabicPIIRedaction_space"] = {
+            "kind": "space",
+            "reachable": True,
+            "id": space.id,
+            "sha": space.sha,
+            "private": getattr(space, "private", None),
+            "gated": getattr(space, "gated", None),
+            "files": space_files,
+        }
+    except Exception as exc:
+        out["sources"]["Maqsam/ArabicPIIRedaction_space"] = {
+            "kind": "space",
+            "reachable": False,
+            "error": type(exc).__name__ + ": " + str(exc)[:600],
+        }
+
     dump_json(RESULTS / "source_qualification.json", out)
     return out
 
