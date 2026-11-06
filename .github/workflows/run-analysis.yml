@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - "src/**"
+      - "tests/**"
       - "requirements.txt"
       - ".github/workflows/run-analysis.yml"
   workflow_dispatch:
@@ -13,6 +14,10 @@ on:
 permissions:
   contents: write
   issues: write
+
+concurrency:
+  group: dataset-audit-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   audit:
