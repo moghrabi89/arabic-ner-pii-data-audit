@@ -1,5 +1,5 @@
 {
-  "checked_utc": "2026-11-06T12:24:35.907219+00:00",
+  "checked_utc": "2026-11-06T12:28:06.811717+00:00",
   "sources": {
     "unimelb-nlp/wikiann": {
       "kind": "dataset",
@@ -13,7 +13,7 @@
     "Maqsam/ArabicPIIRedaction": {
       "kind": "dataset",
       "reachable": false,
-      "error": "RepositoryNotFoundError: 401 Client Error. (Request ID: Root=1-6aedc704-67cc0feb3149c1e05a2c3400;af56726f-20d6-4147-a412-16390e035ad7)\n\nRepository Not Found for url: https://huggingface.co/api/datasets/Maqsam/ArabicPIIRedaction.\nPlease make sure you specified the correct `repo_id` and `repo_type`.\nIf you are trying to access a private or gated repo, make sure you are authenticated and your token has the required permissions.\nFor more details, see https://huggingface.co/docs/huggingface_hub/authentication\nInvalid username or password."
+      "error": "RepositoryNotFoundError: 401 Client Error. (Request ID: Root=1-6aedc7d7-315936240a11934227c87d40;ebd4b6f1-fdee-42a7-ae9e-0f2454f704f2)\n\nRepository Not Found for url: https://huggingface.co/api/datasets/Maqsam/ArabicPIIRedaction.\nPlease make sure you specified the correct `repo_id` and `repo_type`.\nIf you are trying to access a private or gated repo, make sure you are authenticated and your token has the required permissions.\nFor more details, see https://huggingface.co/docs/huggingface_hub/authentication\nInvalid username or password."
     },
     "MutazYoune/Arabic-NER-PII": {
       "kind": "model",
@@ -32,6 +32,19 @@
       "private": false,
       "gated": false,
       "pipeline_tag": "text-classification"
+    },
+    "Maqsam/ArabicPIIRedaction_space": {
+      "kind": "space",
+      "reachable": true,
+      "id": "Maqsam/ArabicPIIRedaction",
+      "sha": "939205121588c6889ea6401aab2332ae635a0279",
+      "private": false,
+      "gated": false,
+      "files": [
+        ".gitattributes",
+        "Dockerfile",
+        "README.md"
+      ]
     }
   },
   "model_card_claims": {

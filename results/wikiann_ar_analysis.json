@@ -200,6 +200,8 @@
     "annotation_length_mismatches": 0,
     "bio_transition_errors": 0,
     "replacement_character_rows": 0,
+    "redirect_like_prefix_rows": 20191,
+    "redirect_like_prefix_pct": 50.4775,
     "samples_with_arabic_letters_pct": 99.9025,
     "samples_with_latin_letters_pct": 4.7,
     "mixed_arabic_latin_script_pct": 4.5125

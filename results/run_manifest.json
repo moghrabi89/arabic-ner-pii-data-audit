@@ -13,6 +13,7 @@
     "reports/FINAL_REPORT.md",
     "results/dataset_comparison.csv",
     "results/maqsam_arabic_pii_redaction_analysis.json",
+    "results/run_manifest.json",
     "results/source_qualification.json",
     "results/wikiann_ar_analysis.json",
     "results/wikiann_ar_random_samples.csv",
