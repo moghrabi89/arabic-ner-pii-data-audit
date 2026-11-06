@@ -90,6 +90,12 @@ def build_report(source_q, ar, en, maqsam):
     ac = ar["combined"]
     ec = en["combined"]
     maqsam_direct = maqsam.get("source_status") == "DIRECTLY_MEASURED"
+    space_info = source_q.get("sources", {}).get("Maqsam/ArabicPIIRedaction_space", {})
+    space_files = ", ".join(space_info.get("files", [])) if space_info.get("reachable") else "unavailable"
+    ar_entities = ac.get("semantic_entity_counts_from_spans", {})
+    en_entities = ec.get("semantic_entity_counts_from_spans", {})
+    ar_entity_balance = max(ar_entities.values()) / min(ar_entities.values()) if ar_entities else None
+    en_entity_balance = max(en_entities.values()) / min(en_entities.values()) if en_entities else None
 
     lines = [
         "# Arabic NER and PII Dataset Audit — Final Technical Report",
@@ -110,13 +116,15 @@ def build_report(source_q, ar, en, maqsam):
         "|---|---|---|---|",
         "| unimelb-nlp/wikiann | Dataset | DIRECTLY_MEASURED | Arabic and English NER analysis |",
         "| MutazYoune/Arabic-NER-PII | Model | MODEL_ONLY | Points to a declared Arabic PII training dataset |",
-        "| Maqsam/ArabicPIIRedaction | Declared training dataset | " + escape_cell(maqsam.get("source_status")) + " | Analyzed only if direct access succeeds |",
+        "| Maqsam/ArabicPIIRedaction as dataset namespace | Declared by model card | " + escape_cell(maqsam.get("source_status")) + " | No public dataset rows were returned by the Hub dataset API |",
+        "| Maqsam/ArabicPIIRedaction public Space | Competition Space | REACHABLE | Public repo files: " + escape_cell(space_files) + " — no raw corpus file is exposed in the Space repository |",
         "| contriqx-Hub/arabic-pii-guardrail | Model | MODEL_ONLY | Taxonomy and intent-classifier context, not raw NER examples |",
         "",
     ]
     if maqsam.get("access_error"):
         lines.extend([
             "**Maqsam access evidence:** " + escape_cell(maqsam["access_error"]),
+            "**Space verification:** the public Maqsam/ArabicPIIRedaction Space is reachable, but its repository contains only " + escape_cell(space_files) + "; therefore it is not a substitute for the missing raw training corpus.",
             "",
         ])
 
@@ -172,6 +180,10 @@ def build_report(source_q, ar, en, maqsam):
     lines.extend([
         "Qualitative interpretation: WikiANN is Wikipedia-derived NER material, not conversational PII text. Short fragments, title-like snippets and Wikipedia artifacts can therefore appear even when the annotation is structurally valid. This domain difference matters for a future model intended for chats, forms or personal-data redaction.",
         "",
+        "**Manual sample-quality findings:** the deterministic Arabic sample includes cases such as كتلة شمسية and نصف قطر شمسي labeled ORG, and وسائل تواصل اجتماعي labeled ORG; the English sample includes West Hartford, CT labeled ORG and song titles labeled ORG. These are semantically questionable labels and are concrete evidence of silver-standard annotation noise rather than merely a theoretical risk.",
+        "",
+        "A second Arabic-specific artifact is very large: **" + str(ac.get("redirect_like_prefix_rows", 0)) + " of " + str(ac["rows"]) + " rows (" + fmt(ac.get("redirect_like_prefix_pct", 0.0)) + "%) begin with تحويل**. This strongly indicates Wikipedia redirect/title-style material and means the Arabic subset is not representative of ordinary natural prose.",
+        "",
         "## 4. Labels and PII coverage",
         "",
         label_table("WikiANN Arabic BIO label distribution", ac["label_counts"]),
@@ -179,6 +191,8 @@ def build_report(source_q, ar, en, maqsam):
         label_table("WikiANN English BIO label distribution", ec["label_counts"]),
         "",
         "WikiANN has seven BIO labels but only three semantic entity classes: **PER, ORG and LOC**.",
+        "",
+        "At the semantic entity-start level, WikiANN is comparatively balanced: Arabic LOC/ORG/PER counts are " + str(ar_entities) + " (max/min ratio " + fmt(ar_entity_balance) + "), and English counts are " + str(en_entities) + " (max/min ratio " + fmt(en_entity_balance) + "). The bigger imbalance concern is therefore O versus entity tokens and domain/annotation quality, not severe PER/ORG/LOC scarcity.",
         "",
         "| PII or entity category | WikiANN |",
         "|---|---|",
@@ -207,8 +221,8 @@ def build_report(source_q, ar, en, maqsam):
         "",
         "- Arabic O-token share: **" + fmt(ac["O_token_pct"]) + "%**.",
         "- English O-token share: **" + fmt(ec["O_token_pct"]) + "%**.",
-        "- Arabic exact duplicate rows across all splits combined: **" + str(ac["exact_duplicate_rows"]) + "**.",
-        "- English exact duplicate rows across all splits combined: **" + str(ec["exact_duplicate_rows"]) + "**.",
+        "- Arabic exact duplicate rows across all splits combined: **" + str(ac["exact_duplicate_rows"]) + " (" + fmt(ac["exact_duplicate_rows"] / ac["rows"] * 100) + "%)**.",
+        "- English exact duplicate rows across all splits combined: **" + str(ec["exact_duplicate_rows"]) + " (" + fmt(ec["exact_duplicate_rows"] / ec["rows"] * 100) + "%)**.",
         "- Arabic annotation-length mismatches: **" + str(ac["annotation_length_mismatches"]) + "**.",
         "- English annotation-length mismatches: **" + str(ec["annotation_length_mismatches"]) + "**.",
         "- Arabic BIO transition anomalies: **" + str(ac["bio_transition_errors"]) + "**.",
@@ -216,17 +230,22 @@ def build_report(source_q, ar, en, maqsam):
         "- Arabic long-length IQR outliers: **" + str(ac["length"]["iqr_outlier_count"]) + " (" + fmt(ac["length"]["iqr_outlier_pct"]) + "%)**.",
         "- English long-length IQR outliers: **" + str(ec["length"]["iqr_outlier_count"]) + " (" + fmt(ec["length"]["iqr_outlier_pct"]) + "%)**.",
         "- Arabic rows containing both Arabic and Latin-script letters: **" + fmt(ac["mixed_arabic_latin_script_pct"]) + "%**.",
+        "- Arabic redirect-like rows beginning with تحويل: **" + str(ac.get("redirect_like_prefix_rows", 0)) + " (" + fmt(ac.get("redirect_like_prefix_pct", 0.0)) + "%)**.",
         "",
         "### Cross-split exact-overlap audit",
         "",
-        "| Pair | Arabic overlap | English overlap |",
-        "|---|---:|---:|",
+        "| Pair | Arabic overlap | Arabic % of smaller unique split | English overlap | English % of smaller unique split |",
+        "|---|---:|---:|---:|---:|",
     ])
     pairs = sorted(set(ar["cross_split_exact_overlap"]) | set(en["cross_split_exact_overlap"]))
     for pair in pairs:
-        av = ar["cross_split_exact_overlap"].get(pair, {}).get("exact_sentence_overlap", 0)
-        ev = en["cross_split_exact_overlap"].get(pair, {}).get("exact_sentence_overlap", 0)
-        lines.append("| " + pair + " | " + str(av) + " | " + str(ev) + " |")
+        arow = ar["cross_split_exact_overlap"].get(pair, {})
+        erow = en["cross_split_exact_overlap"].get(pair, {})
+        av = arow.get("exact_sentence_overlap", 0)
+        ev = erow.get("exact_sentence_overlap", 0)
+        ap = arow.get("pct_of_smaller_unique_split", 0.0)
+        ep = erow.get("pct_of_smaller_unique_split", 0.0)
+        lines.append("| " + pair + " | " + str(av) + " | " + fmt(ap) + "% | " + str(ev) + " | " + fmt(ep) + "% |")
 
     lines.extend([
         "",
@@ -245,7 +264,7 @@ def build_report(source_q, ar, en, maqsam):
         "",
         "| Resource | Status for future Arabic token-level NER/PII training | Why |",
         "|---|---|---|",
-        "| WikiANN Arabic | **LIMITED / USEFUL AUXILIARY** | Good PER/ORG/LOC Arabic NER signal, but incomplete PII taxonomy and Wikipedia domain mismatch. |",
+        "| WikiANN Arabic | **LIMITED / USEFUL AUXILIARY** | Good PER/ORG/LOC signal, but incomplete PII taxonomy, high exact duplication/split overlap, 50% redirect-like rows, questionable silver labels and Wikipedia domain mismatch. |",
         "| WikiANN English | **AUXILIARY / MULTILINGUAL CONTROL** | Useful for English comparison and multilingual experiments, not the core Arabic PII corpus. |",
         "| Maqsam/ArabicPIIRedaction | **" + ("READY_WITH_AUDIT" if maqsam_direct else "UNVERIFIED / ACCESS-BLOCKED") + "** | " + ("Rows were directly measured; inspect generated findings before use." if maqsam_direct else "The model card is promising, but the raw rows were not directly auditable in this execution.") + " |",
         "| arabic-pii-guardrail | **NOT A DIRECT NER DATASET** | Useful later as a second-stage sharing-intent signal or taxonomy reference, not as supplied token-boundary training data. |",
