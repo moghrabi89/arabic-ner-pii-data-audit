@@ -24,6 +24,7 @@ def analyze_wikiann(lang: str):
     arabic_present = 0
     latin_present = 0
     replacement_chars = 0
+    redirect_like_prefix = 0
 
     for split, part in ds.items():
         lengths = []
@@ -54,6 +55,10 @@ def analyze_wikiann(lang: str):
                 mixed_script += 1
             if "\ufffd" in text:
                 replacement_chars += 1
+            if lang == "ar" and text.startswith("تحويل "):
+                redirect_like_prefix += 1
+            if lang == "en" and (text.lower().startswith("redirect ") or text.startswith("#REDIRECT")):
+                redirect_like_prefix += 1
 
         all_lengths.extend(lengths)
         all_texts.extend(texts)
@@ -114,6 +119,8 @@ def analyze_wikiann(lang: str):
             "annotation_length_mismatches": annotation_mismatch,
             "bio_transition_errors": bio_problem_count,
             "replacement_character_rows": replacement_chars,
+            "redirect_like_prefix_rows": redirect_like_prefix,
+            "redirect_like_prefix_pct": redirect_like_prefix / max(1, len(all_texts)) * 100,
             "samples_with_arabic_letters_pct": arabic_present / max(1, len(all_texts)) * 100,
             "samples_with_latin_letters_pct": latin_present / max(1, len(all_texts)) * 100,
             "mixed_arabic_latin_script_pct": mixed_script / max(1, len(all_texts)) * 100,
