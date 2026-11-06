@@ -160,8 +160,58 @@ It runs:
 
 The final manifest reports PASS or PASS_WITH_EVIDENCE_BOUNDARIES. An inaccessible optional training dataset does not cause the entire assignment to fail, because the limitation itself is a verified finding.
 
+## tests/test_common.py
+
+This file provides deterministic unit tests for the core helper contract. The current tests verify:
+
+- whitespace/Unicode normalization behavior
+- a valid BIO sequence produces zero transition errors
+- an orphan I-tag is detected
+- the canonical WikiANN label mapping remains stable
+
+These tests are intentionally lightweight: the full dataset audit remains the integration/E2E gate, while this suite catches regressions in reusable helper behavior before the expensive analysis begins.
+
+## Dependency reproducibility
+
+The top-level analysis dependencies are now pinned to the exact versions from the verified clean run:
+
+- datasets 4.8.5
+- huggingface_hub 1.33.0
+- pandas 3.1.1
+- numpy 2.4.6
+- scipy 1.17.1
+- matplotlib 3.11.2
+- pyarrow 26.0.1
+
+This removes the earlier version-range drift risk for the principal analysis stack.
+
+## GitHub Actions workflow
+
+The workflow uses Python 3.11 and runs the project through explicit quality gates:
+
+1. install the exact top-level dependency set
+2. compile all Python modules as a syntax gate
+3. run the deterministic unit-test suite
+4. execute the full end-to-end dataset audit
+5. upload the reproducibility artifact
+6. commit generated results, figures and report back to the repository
+
+The workflow also uses a concurrency group for the main branch so overlapping audit runs are serialized and an older in-progress run cannot become the canonical closure by accident.
+
+## Final verified execution
+
+The repaired repository was revalidated on the current implementation state.
+
+- GitHub Actions run: #8
+- Run ID: 42243655615
+- Validated head SHA: 1f1d3328310d7f493307639d6309b872e96754e2
+- Generated-evidence commit: 48ddde9f17bd9c1e98e4bc8a5edcc8035a59b6fd
+- Artifact ID: 13515953129
+- Artifact SHA-256: 347f67fd5e59e624e5f6c601afd2e1a15d23c3a957df5aaac653d0b4ead3991c
+- Workflow conclusion: SUCCESS
+
+The generated `run_manifest.json` reports `PASS_WITH_EVIDENCE_BOUNDARIES`, and its stored report character count matches the generated final report.
+
 ## Reproducibility
 
-The GitHub Actions workflow uses Python 3.11, installs requirements.txt, runs the module, uploads outputs as an artifact, and commits generated results/figures/report back to the repository.
-
-The random seed is fixed at 42.
+The random seed is fixed at 42. The combination of exact top-level dependencies, syntax compilation, unit tests, full E2E execution, generated evidence commit, and artifact digest provides the final reproducibility/readback chain for this delivery.
