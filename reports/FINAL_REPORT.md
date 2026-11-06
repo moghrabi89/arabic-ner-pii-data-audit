@@ -10,6 +10,10 @@ The three supplied Hugging Face links are not three equivalent datasets. WikiANN
 
 Accordingly, this report separates directly measured dataset facts from model-card claims. No statistic is presented as measured unless the underlying examples were accessible to the execution.
 
+## المنهجية المتبعة
+
+اعتمد التحليل على منهجية تحقق متدرجة تبدأ بتثبيت هوية كل مصدر ومرجعيته قبل استخدامه، مع الفصل بين البيانات التي أمكن قياسها مباشرة والمعلومات الواردة في صفحات النماذج فقط. بعد ذلك نُفذت فحوص جودة متعددة تشمل سلامة البنية، التكرار، تداخل مجموعات التدريب والتحقق والاختبار، الاتساق في الوسوم، والقيم الشاذة. وفي المرحلة الأخيرة أُعيدت قراءة النتائج ومقارنتها بالمخرجات الآلية قبل إغلاق التحليل، لضمان أن الأرقام والاستنتاجات الواردة في التقرير مدعومة بأدلة قابلة للتحقق وإعادة الإنتاج.
+
 ## 1. Source qualification and provenance
 
 | Resource supplied or resolved | Type | Direct EDA status | Role in this assignment |
