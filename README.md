@@ -15,7 +15,7 @@ The supplied URLs are not equivalent:
 - `contriqx-Hub/arabic-pii-guardrail` is an intent-classification model, not a token-level NER dataset. Its training-data claims are kept separate from directly measured dataset facts.
 
 ## Reproducibility
-The GitHub Actions workflow installs an exact top-level dependency set captured from the last successful reproducible run, loads accessible Hugging Face datasets, runs the audit, writes figures/tables/JSON/Markdown, and commits generated outputs back to the repository.
+The GitHub Actions workflow installs `requirements-lock.txt`, an exact dependency snapshot captured from a successful reproducible run, loads accessible Hugging Face datasets, runs the audit, writes figures/tables/JSON/Markdown, and commits generated outputs back to the repository.
 
 ## Evidence rule
 Model-card claims are reported as **documented claims** unless the underlying training data is accessible and independently measured. Unavailable evidence remains **UNKNOWN / NOT DIRECTLY VERIFIABLE**.
@@ -31,6 +31,7 @@ Model-card claims are reported as **documented claims** unless the underlying tr
 - `figures/` — generated plots.
 - `reports/FINAL_REPORT.md` — generated technical report.
 - `docs/CODE_EXPLANATION.md` — code walkthrough.
+- `requirements-lock.txt` — exact dependency snapshot used by CI.
 - `.github/workflows/run-analysis.yml` — reproducible execution.
 
 Seed: `42`.
