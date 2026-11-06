@@ -9,8 +9,7 @@ def fmt(value, digits=3):
     if value is None:
         return "N/A"
     if isinstance(value, float):
-        return f"{value:.{digits}f"
-        + "}"
+        return format(value, "." + str(digits) + "f")
     return str(value)
 
 
