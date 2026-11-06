@@ -101,3 +101,5 @@ jobs:
       - name: Fail workflow if analysis failed
         if: steps.analysis.outcome == 'failure'
         run: exit 1
+
+# Final canonical validation trigger
