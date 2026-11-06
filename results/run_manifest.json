@@ -1,0 +1,23 @@
+{
+  "seed": 42,
+  "status": "PASS_WITH_EVIDENCE_BOUNDARIES",
+  "evidence_boundaries": [
+    "Maqsam/ArabicPIIRedaction could not be directly measured; its model-card claims remain documented claims.",
+    "contriqx-Hub/arabic-pii-guardrail is a model link without a directly supplied raw training dataset."
+  ],
+  "generated_files": [
+    "figures/wikiann_ar_length_distribution.png",
+    "figures/wikiann_ar_qq_plot.png",
+    "figures/wikiann_en_length_distribution.png",
+    "figures/wikiann_en_qq_plot.png",
+    "reports/FINAL_REPORT.md",
+    "results/dataset_comparison.csv",
+    "results/maqsam_arabic_pii_redaction_analysis.json",
+    "results/source_qualification.json",
+    "results/wikiann_ar_analysis.json",
+    "results/wikiann_ar_random_samples.csv",
+    "results/wikiann_en_analysis.json",
+    "results/wikiann_en_random_samples.csv"
+  ],
+  "report_character_count": 11462
+}

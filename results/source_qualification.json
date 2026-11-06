@@ -1,0 +1,91 @@
+{
+  "checked_utc": "2026-11-06T12:24:35.907219+00:00",
+  "sources": {
+    "unimelb-nlp/wikiann": {
+      "kind": "dataset",
+      "reachable": true,
+      "id": "unimelb-nlp/wikiann",
+      "sha": "f0a3be6dc5564c0cc4150bb660144800a1f539d4",
+      "private": false,
+      "gated": false,
+      "pipeline_tag": null
+    },
+    "Maqsam/ArabicPIIRedaction": {
+      "kind": "dataset",
+      "reachable": false,
+      "error": "RepositoryNotFoundError: 401 Client Error. (Request ID: Root=1-6aedc704-67cc0feb3149c1e05a2c3400;af56726f-20d6-4147-a412-16390e035ad7)\n\nRepository Not Found for url: https://huggingface.co/api/datasets/Maqsam/ArabicPIIRedaction.\nPlease make sure you specified the correct `repo_id` and `repo_type`.\nIf you are trying to access a private or gated repo, make sure you are authenticated and your token has the required permissions.\nFor more details, see https://huggingface.co/docs/huggingface_hub/authentication\nInvalid username or password."
+    },
+    "MutazYoune/Arabic-NER-PII": {
+      "kind": "model",
+      "reachable": true,
+      "id": "MutazYoune/Arabic-NER-PII",
+      "sha": "6008087a5a02143ecda74986f0f292b3975bd6a3",
+      "private": false,
+      "gated": false,
+      "pipeline_tag": "token-classification"
+    },
+    "contriqx-Hub/arabic-pii-guardrail": {
+      "kind": "model",
+      "reachable": true,
+      "id": "contriqx-Hub/arabic-pii-guardrail",
+      "sha": "23e38b600a03582b937be45688f64277b62d0a61",
+      "private": false,
+      "gated": false,
+      "pipeline_tag": "text-classification"
+    }
+  },
+  "model_card_claims": {
+    "MutazYoune/Arabic-NER-PII": {
+      "source_type": "model",
+      "task": "token-classification / NER",
+      "declared_training_dataset": "Maqsam/ArabicPIIRedaction",
+      "declared_size": "20,000 sentences (10k original + 10k LLM-augmented)",
+      "declared_annotation": "BIO tagging scheme with regex pattern matching",
+      "declared_labels": "11 total: O + B-/I- for CONTACT, NETWORK, IDENTIFIER, NUMERIC_ID, PII",
+      "declared_entities": [
+        "CONTACT",
+        "NETWORK",
+        "IDENTIFIER",
+        "NUMERIC_ID",
+        "PII"
+      ]
+    },
+    "contriqx-Hub/arabic-pii-guardrail": {
+      "source_type": "model",
+      "task": "binary PII-sharing intent classification, not token-level NER",
+      "declared_training_dataset": null,
+      "declared_size": "41,427 samples across 9 original entity types + 2,500 NAME samples",
+      "declared_languages": [
+        "Arabic",
+        "English",
+        "Mixed/code-switched",
+        "Arabizi"
+      ],
+      "entity_types": [
+        "PHONE",
+        "EMAIL",
+        "SOCIAL_MEDIA",
+        "IBAN",
+        "ADDRESS",
+        "URL",
+        "CREDIT_CARD",
+        "CRYPTO_ADDRESS",
+        "OFF_PLATFORM_ATTEMPT",
+        "NAME"
+      ],
+      "output_labels": [
+        "PII",
+        "NOT_PII"
+      ],
+      "benchmark_claims": {
+        "macro_f1": 0.865,
+        "accuracy": 0.866,
+        "false_positive_rate": 0.288,
+        "false_negative_rate": 0.031,
+        "mixed_language_f1": 0.782,
+        "false_positive_traps_f1": 0.415,
+        "context_flip_pairs_f1": 0.637
+      }
+    }
+  }
+}

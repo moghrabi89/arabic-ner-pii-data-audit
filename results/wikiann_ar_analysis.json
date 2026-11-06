@@ -1,0 +1,477 @@
+{
+  "dataset": "unimelb-nlp/wikiann",
+  "language": "ar",
+  "source_status": "DIRECTLY_MEASURED",
+  "splits": {
+    "validation": {
+      "rows": 10000,
+      "length": {
+        "n": 10000,
+        "mean": 6.4291,
+        "median": 5.0,
+        "std": 3.475540408067904,
+        "min": 3,
+        "p25": 4.0,
+        "p75": 7.0,
+        "p95": 12.0,
+        "p99": 22.0,
+        "max": 51,
+        "skew": 3.7401160153812225,
+        "excess_kurtosis": 21.40771499659939,
+        "iqr_outlier_threshold": 11.5,
+        "iqr_outlier_count": 592,
+        "iqr_outlier_pct": 5.92
+      },
+      "normality": {
+        "dagostino_k2": 8034.950791732074,
+        "dagostino_p": 0.0,
+        "shapiro_w": 0.6405221191048618,
+        "shapiro_p": 3.542135589744303e-73,
+        "shapiro_n": 5000,
+        "anderson_statistic": 913.4307594230668,
+        "anderson_critical_values": [
+          0.561,
+          0.631,
+          0.752,
+          0.873,
+          1.035
+        ],
+        "decision_alpha_0_05": "REJECT_NORMALITY"
+      },
+      "exact_duplicate_rows": 681,
+      "exact_duplicate_pct": 6.81,
+      "label_counts": {
+        "O": 26334,
+        "B-LOC": 3856,
+        "I-LOC": 9176,
+        "B-ORG": 3596,
+        "I-ORG": 9708,
+        "B-PER": 3815,
+        "I-PER": 7806
+      }
+    },
+    "test": {
+      "rows": 10000,
+      "length": {
+        "n": 10000,
+        "mean": 6.4347,
+        "median": 5.0,
+        "std": 3.410791588462419,
+        "min": 3,
+        "p25": 5.0,
+        "p75": 7.0,
+        "p95": 12.0,
+        "p99": 21.0,
+        "max": 53,
+        "skew": 3.890390842164987,
+        "excess_kurtosis": 25.792912890471936,
+        "iqr_outlier_threshold": 10.0,
+        "iqr_outlier_count": 723,
+        "iqr_outlier_pct": 7.23
+      },
+      "normality": {
+        "dagostino_k2": 8413.384005282802,
+        "dagostino_p": 0.0,
+        "shapiro_w": 0.6495133860134245,
+        "shapiro_p": 1.1778037091426611e-72,
+        "shapiro_n": 5000,
+        "anderson_statistic": 877.3529145541652,
+        "anderson_critical_values": [
+          0.561,
+          0.631,
+          0.752,
+          0.873,
+          1.035
+        ],
+        "decision_alpha_0_05": "REJECT_NORMALITY"
+      },
+      "exact_duplicate_rows": 706,
+      "exact_duplicate_pct": 7.06,
+      "label_counts": {
+        "O": 26033,
+        "B-ORG": 3629,
+        "I-ORG": 10045,
+        "B-LOC": 3780,
+        "I-LOC": 9073,
+        "B-PER": 3850,
+        "I-PER": 7937
+      }
+    },
+    "train": {
+      "rows": 20000,
+      "length": {
+        "n": 20000,
+        "mean": 6.4592,
+        "median": 5.0,
+        "std": 3.5208174005134643,
+        "min": 3,
+        "p25": 4.0,
+        "p75": 7.0,
+        "p95": 12.0,
+        "p99": 22.0,
+        "max": 63,
+        "skew": 3.9398935611499097,
+        "excess_kurtosis": 26.02878887983554,
+        "iqr_outlier_threshold": 11.5,
+        "iqr_outlier_count": 1174,
+        "iqr_outlier_pct": 5.87
+      },
+      "normality": {
+        "dagostino_k2": 16934.92557687319,
+        "dagostino_p": 0.0,
+        "shapiro_w": 0.6138506547244793,
+        "shapiro_p": 1.1602036215756514e-74,
+        "shapiro_n": 5000,
+        "anderson_statistic": 1823.0739213590568,
+        "anderson_critical_values": [
+          0.561,
+          0.631,
+          0.752,
+          0.873,
+          1.035
+        ],
+        "decision_alpha_0_05": "REJECT_NORMALITY"
+      },
+      "exact_duplicate_rows": 2295,
+      "exact_duplicate_pct": 11.475,
+      "label_counts": {
+        "B-ORG": 7183,
+        "I-ORG": 19550,
+        "O": 53149,
+        "B-PER": 7539,
+        "I-PER": 15422,
+        "B-LOC": 7779,
+        "I-LOC": 18562
+      }
+    }
+  },
+  "combined": {
+    "rows": 40000,
+    "length": {
+      "n": 40000,
+      "mean": 6.44555,
+      "median": 5.0,
+      "std": 3.4822246258259413,
+      "min": 3,
+      "p25": 4.0,
+      "p75": 7.0,
+      "p95": 12.0,
+      "p99": 21.0,
+      "max": 63,
+      "skew": 3.879462733556378,
+      "excess_kurtosis": 24.843528372098998,
+      "iqr_outlier_threshold": 11.5,
+      "iqr_outlier_count": 2342,
+      "iqr_outlier_pct": 5.8549999999999995
+    },
+    "normality": {
+      "dagostino_k2": 33345.644345358654,
+      "dagostino_p": 0.0,
+      "shapiro_w": 0.6291799228073742,
+      "shapiro_p": 8.06715297153923e-74,
+      "shapiro_n": 5000,
+      "anderson_statistic": 3613.6358142197423,
+      "anderson_critical_values": [
+        0.561,
+        0.631,
+        0.752,
+        0.873,
+        1.035
+      ],
+      "decision_alpha_0_05": "REJECT_NORMALITY"
+    },
+    "label_counts": {
+      "O": 105516,
+      "B-LOC": 15415,
+      "I-LOC": 36811,
+      "B-ORG": 14408,
+      "I-ORG": 39303,
+      "B-PER": 15204,
+      "I-PER": 31165
+    },
+    "semantic_entity_counts_from_spans": {
+      "LOC": 15415,
+      "ORG": 14408,
+      "PER": 15204
+    },
+    "O_token_pct": 40.92591012403906,
+    "entity_token_pct": 59.07408987596094,
+    "exact_duplicate_rows": 6985,
+    "annotation_length_mismatches": 0,
+    "bio_transition_errors": 0,
+    "replacement_character_rows": 0,
+    "samples_with_arabic_letters_pct": 99.9025,
+    "samples_with_latin_letters_pct": 4.7,
+    "mixed_arabic_latin_script_pct": 4.5125
+  },
+  "cross_split_exact_overlap": {
+    "validation__test": {
+      "exact_sentence_overlap": 911,
+      "pct_of_smaller_unique_split": 9.802022810415322
+    },
+    "validation__train": {
+      "exact_sentence_overlap": 1387,
+      "pct_of_smaller_unique_split": 14.883571198626461
+    },
+    "test__train": {
+      "exact_sentence_overlap": 1454,
+      "pct_of_smaller_unique_split": 15.644501829137077
+    }
+  },
+  "random_samples": [
+    {
+      "index": 1718,
+      "text": "وانتقلت إلى مومباي وقدمت العديد من العروض هناك .",
+      "tokens": [
+        "وانتقلت",
+        "إلى",
+        "مومباي",
+        "وقدمت",
+        "العديد",
+        "من",
+        "العروض",
+        "هناك",
+        "."
+      ],
+      "labels": [
+        "O",
+        "O",
+        "B-LOC",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O"
+      ],
+      "spans": [
+        "LOC: مومباي"
+      ]
+    },
+    {
+      "index": 15472,
+      "text": "تحويل فاندرهوف ( كولومبيا البريطانية )",
+      "tokens": [
+        "تحويل",
+        "فاندرهوف",
+        "(",
+        "كولومبيا",
+        "البريطانية",
+        ")"
+      ],
+      "labels": [
+        "O",
+        "B-LOC",
+        "I-LOC",
+        "I-LOC",
+        "I-LOC",
+        "I-LOC"
+      ],
+      "spans": [
+        "LOC: فاندرهوف ( كولومبيا البريطانية )"
+      ]
+    },
+    {
+      "index": 1784,
+      "text": "تحويل ابن حزم الأندلسي",
+      "tokens": [
+        "تحويل",
+        "ابن",
+        "حزم",
+        "الأندلسي"
+      ],
+      "labels": [
+        "O",
+        "B-PER",
+        "I-PER",
+        "I-PER"
+      ],
+      "spans": [
+        "PER: ابن حزم الأندلسي"
+      ]
+    },
+    {
+      "index": 13086,
+      "text": "كتلته تعادل 2,7 كتلة شمسية ونصف قطره 3 نصف قطر شمسي .",
+      "tokens": [
+        "كتلته",
+        "تعادل",
+        "2,7",
+        "كتلة",
+        "شمسية",
+        "ونصف",
+        "قطره",
+        "3",
+        "نصف",
+        "قطر",
+        "شمسي",
+        "."
+      ],
+      "labels": [
+        "O",
+        "O",
+        "O",
+        "B-ORG",
+        "I-ORG",
+        "O",
+        "O",
+        "O",
+        "B-ORG",
+        "I-ORG",
+        "I-ORG",
+        "O"
+      ],
+      "spans": [
+        "ORG: كتلة شمسية",
+        "ORG: نصف قطر شمسي"
+      ]
+    },
+    {
+      "index": 8774,
+      "text": "تحويل ابن البناء المراكشي",
+      "tokens": [
+        "تحويل",
+        "ابن",
+        "البناء",
+        "المراكشي"
+      ],
+      "labels": [
+        "O",
+        "B-PER",
+        "I-PER",
+        "I-PER"
+      ],
+      "spans": [
+        "PER: ابن البناء المراكشي"
+      ]
+    },
+    {
+      "index": 8658,
+      "text": "تحويل مقاطعة تشيبيوا ( مينيسوتا )",
+      "tokens": [
+        "تحويل",
+        "مقاطعة",
+        "تشيبيوا",
+        "(",
+        "مينيسوتا",
+        ")"
+      ],
+      "labels": [
+        "O",
+        "B-LOC",
+        "I-LOC",
+        "I-LOC",
+        "I-LOC",
+        "I-LOC"
+      ],
+      "spans": [
+        "LOC: مقاطعة تشيبيوا ( مينيسوتا )"
+      ]
+    },
+    {
+      "index": 13945,
+      "text": "تحويل وسائل تواصل اجتماعي",
+      "tokens": [
+        "تحويل",
+        "وسائل",
+        "تواصل",
+        "اجتماعي"
+      ],
+      "labels": [
+        "O",
+        "B-ORG",
+        "I-ORG",
+        "I-ORG"
+      ],
+      "spans": [
+        "ORG: وسائل تواصل اجتماعي"
+      ]
+    },
+    {
+      "index": 1883,
+      "text": "تحويل رقم يو إن",
+      "tokens": [
+        "تحويل",
+        "رقم",
+        "يو",
+        "إن"
+      ],
+      "labels": [
+        "O",
+        "B-ORG",
+        "I-ORG",
+        "I-ORG"
+      ],
+      "spans": [
+        "ORG: رقم يو إن"
+      ]
+    },
+    {
+      "index": 4029,
+      "text": "تحويل روكلاند ( مقاطعة مانيتووك )",
+      "tokens": [
+        "تحويل",
+        "روكلاند",
+        "(",
+        "مقاطعة",
+        "مانيتووك",
+        ")"
+      ],
+      "labels": [
+        "O",
+        "B-LOC",
+        "I-LOC",
+        "I-LOC",
+        "I-LOC",
+        "I-LOC"
+      ],
+      "spans": [
+        "LOC: روكلاند ( مقاطعة مانيتووك )"
+      ]
+    },
+    {
+      "index": 17168,
+      "text": "مثّل منتخب كوستاريكا لكرة القدم .",
+      "tokens": [
+        "مثّل",
+        "منتخب",
+        "كوستاريكا",
+        "لكرة",
+        "القدم",
+        "."
+      ],
+      "labels": [
+        "O",
+        "B-ORG",
+        "I-ORG",
+        "I-ORG",
+        "I-ORG",
+        "O"
+      ],
+      "spans": [
+        "ORG: منتخب كوستاريكا لكرة القدم"
+      ]
+    }
+  ],
+  "figures": [
+    "figures/wikiann_ar_length_distribution.png",
+    "figures/wikiann_ar_qq_plot.png"
+  ],
+  "semantic_classes": [
+    "PER",
+    "ORG",
+    "LOC"
+  ],
+  "pii_coverage": {
+    "person_name": "YES — PER",
+    "organization": "YES — ORG",
+    "geographic_location": "YES — LOC",
+    "home_address": "NO dedicated class",
+    "phone_number": "NO",
+    "email": "NO",
+    "structured_id": "NO",
+    "iban": "NO",
+    "credit_card": "NO",
+    "social_media": "NO"
+  }
+}

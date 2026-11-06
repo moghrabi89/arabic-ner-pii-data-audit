@@ -1,0 +1,557 @@
+{
+  "dataset": "unimelb-nlp/wikiann",
+  "language": "en",
+  "source_status": "DIRECTLY_MEASURED",
+  "splits": {
+    "validation": {
+      "rows": 10000,
+      "length": {
+        "n": 10000,
+        "mean": 8.0536,
+        "median": 6.0,
+        "std": 5.6855746953110735,
+        "min": 3,
+        "p25": 5.0,
+        "p75": 9.0,
+        "p95": 19.0,
+        "p99": 29.0,
+        "max": 88,
+        "skew": 3.5963435950811724,
+        "excess_kurtosis": 25.63960744728643,
+        "iqr_outlier_threshold": 15.0,
+        "iqr_outlier_count": 861,
+        "iqr_outlier_pct": 8.61
+      },
+      "normality": {
+        "dagostino_k2": 8026.338778575237,
+        "dagostino_p": 0.0,
+        "shapiro_w": 0.6989178572937432,
+        "shapiro_p": 1.4485169034659271e-69,
+        "shapiro_n": 5000,
+        "anderson_statistic": 686.5180011398952,
+        "anderson_critical_values": [
+          0.561,
+          0.631,
+          0.752,
+          0.873,
+          1.035
+        ],
+        "decision_alpha_0_05": "REJECT_NORMALITY"
+      },
+      "exact_duplicate_rows": 110,
+      "exact_duplicate_pct": 1.0999999999999999,
+      "label_counts": {
+        "B-ORG": 4677,
+        "I-ORG": 11638,
+        "O": 40875,
+        "B-LOC": 4834,
+        "I-LOC": 6357,
+        "B-PER": 4635,
+        "I-PER": 7520
+      }
+    },
+    "test": {
+      "rows": 10000,
+      "length": {
+        "n": 10000,
+        "mean": 8.0326,
+        "median": 6.0,
+        "std": 5.834118693864002,
+        "min": 3,
+        "p25": 5.0,
+        "p75": 9.0,
+        "p95": 19.0,
+        "p99": 27.01000000000022,
+        "max": 213,
+        "skew": 6.792280669541705,
+        "excess_kurtosis": 165.00108273593895,
+        "iqr_outlier_threshold": 15.0,
+        "iqr_outlier_count": 851,
+        "iqr_outlier_pct": 8.51
+      },
+      "normality": {
+        "dagostino_k2": 13129.62455191463,
+        "dagostino_p": 0.0,
+        "shapiro_w": 0.6024089592997861,
+        "shapiro_p": 2.8471354862176915e-75,
+        "shapiro_n": 5000,
+        "anderson_statistic": 678.622466287532,
+        "anderson_critical_values": [
+          0.561,
+          0.631,
+          0.752,
+          0.873,
+          1.035
+        ],
+        "decision_alpha_0_05": "REJECT_NORMALITY"
+      },
+      "exact_duplicate_rows": 113,
+      "exact_duplicate_pct": 1.13,
+      "label_counts": {
+        "O": 40834,
+        "B-LOC": 4657,
+        "B-PER": 4556,
+        "I-PER": 7480,
+        "B-ORG": 4745,
+        "I-ORG": 11607,
+        "I-LOC": 6447
+      }
+    },
+    "train": {
+      "rows": 20000,
+      "length": {
+        "n": 20000,
+        "mean": 8.0197,
+        "median": 6.0,
+        "std": 6.678505973052776,
+        "min": 2,
+        "p25": 5.0,
+        "p75": 9.0,
+        "p95": 19.0,
+        "p99": 29.0,
+        "max": 439,
+        "skew": 18.43987907770929,
+        "excess_kurtosis": 968.5765661278315,
+        "iqr_outlier_threshold": 15.0,
+        "iqr_outlier_count": 1690,
+        "iqr_outlier_pct": 8.450000000000001
+      },
+      "normality": {
+        "dagostino_k2": 42897.214957303106,
+        "dagostino_p": 0.0,
+        "shapiro_w": 0.3771522081786961,
+        "shapiro_p": 5.691377478000811e-85,
+        "shapiro_n": 5000,
+        "anderson_statistic": 1656.4471043518206,
+        "anderson_critical_values": [
+          0.561,
+          0.631,
+          0.752,
+          0.873,
+          1.035
+        ],
+        "decision_alpha_0_05": "REJECT_NORMALITY"
+      },
+      "exact_duplicate_rows": 366,
+      "exact_duplicate_pct": 1.83,
+      "label_counts": {
+        "B-ORG": 9422,
+        "I-ORG": 23226,
+        "O": 81362,
+        "B-PER": 9164,
+        "I-PER": 14698,
+        "B-LOC": 9345,
+        "I-LOC": 13177
+      }
+    }
+  },
+  "combined": {
+    "rows": 40000,
+    "length": {
+      "n": 40000,
+      "mean": 8.0314,
+      "median": 6.0,
+      "std": 6.236207685537536,
+      "min": 2,
+      "p25": 5.0,
+      "p75": 9.0,
+      "p95": 19.0,
+      "p99": 28.0,
+      "max": 439,
+      "skew": 13.393592385844087,
+      "excess_kurtosis": 672.8854502106899,
+      "iqr_outlier_threshold": 15.0,
+      "iqr_outlier_count": 3402,
+      "iqr_outlier_pct": 8.505
+    },
+    "normality": {
+      "dagostino_k2": 74656.24150420196,
+      "dagostino_p": 0.0,
+      "shapiro_w": 0.37647219052989334,
+      "shapiro_p": 5.381548486243223e-85,
+      "shapiro_n": 5000,
+      "anderson_statistic": 3013.823850301538,
+      "anderson_critical_values": [
+        0.561,
+        0.631,
+        0.752,
+        0.873,
+        1.035
+      ],
+      "decision_alpha_0_05": "REJECT_NORMALITY"
+    },
+    "label_counts": {
+      "B-ORG": 18844,
+      "I-ORG": 46471,
+      "O": 163071,
+      "B-LOC": 18836,
+      "I-LOC": 25981,
+      "B-PER": 18355,
+      "I-PER": 29698
+    },
+    "semantic_entity_counts_from_spans": {
+      "ORG": 18844,
+      "LOC": 18836,
+      "PER": 18355
+    },
+    "O_token_pct": 50.760452723061974,
+    "entity_token_pct": 49.23954727693802,
+    "exact_duplicate_rows": 1145,
+    "annotation_length_mismatches": 0,
+    "bio_transition_errors": 0,
+    "replacement_character_rows": 0,
+    "samples_with_arabic_letters_pct": 0.0225,
+    "samples_with_latin_letters_pct": 99.985,
+    "mixed_arabic_latin_script_pct": 0.02
+  },
+  "cross_split_exact_overlap": {
+    "validation__test": {
+      "exact_sentence_overlap": 139,
+      "pct_of_smaller_unique_split": 1.4058865176494386
+    },
+    "validation__train": {
+      "exact_sentence_overlap": 257,
+      "pct_of_smaller_unique_split": 2.5985844287158746
+    },
+    "test__train": {
+      "exact_sentence_overlap": 226,
+      "pct_of_smaller_unique_split": 2.285829877617073
+    }
+  },
+  "random_samples": [
+    {
+      "index": 1718,
+      "text": "`` I Want to Hold Your Hand '' / `` Twist and Shout '' / `` Hey Jude ''",
+      "tokens": [
+        "``",
+        "I",
+        "Want",
+        "to",
+        "Hold",
+        "Your",
+        "Hand",
+        "''",
+        "/",
+        "``",
+        "Twist",
+        "and",
+        "Shout",
+        "''",
+        "/",
+        "``",
+        "Hey",
+        "Jude",
+        "''"
+      ],
+      "labels": [
+        "O",
+        "B-ORG",
+        "I-ORG",
+        "I-ORG",
+        "I-ORG",
+        "I-ORG",
+        "I-ORG",
+        "O",
+        "O",
+        "O",
+        "B-ORG",
+        "I-ORG",
+        "I-ORG",
+        "O",
+        "O",
+        "O",
+        "B-ORG",
+        "I-ORG",
+        "O"
+      ],
+      "spans": [
+        "ORG: I Want to Hold Your Hand",
+        "ORG: Twist and Shout",
+        "ORG: Hey Jude"
+      ]
+    },
+    {
+      "index": 15472,
+      "text": "Max Ochs , Takoma Records guitarist",
+      "tokens": [
+        "Max",
+        "Ochs",
+        ",",
+        "Takoma",
+        "Records",
+        "guitarist"
+      ],
+      "labels": [
+        "B-PER",
+        "I-PER",
+        "O",
+        "B-ORG",
+        "I-ORG",
+        "O"
+      ],
+      "spans": [
+        "PER: Max Ochs",
+        "ORG: Takoma Records"
+      ]
+    },
+    {
+      "index": 1784,
+      "text": "Pharmaceutical Society of Northern Ireland",
+      "tokens": [
+        "Pharmaceutical",
+        "Society",
+        "of",
+        "Northern",
+        "Ireland"
+      ],
+      "labels": [
+        "B-ORG",
+        "I-ORG",
+        "I-ORG",
+        "I-ORG",
+        "I-ORG"
+      ],
+      "spans": [
+        "ORG: Pharmaceutical Society of Northern Ireland"
+      ]
+    },
+    {
+      "index": 13086,
+      "text": "Kyle Orton 2005 , 2007 , 2008",
+      "tokens": [
+        "Kyle",
+        "Orton",
+        "2005",
+        ",",
+        "2007",
+        ",",
+        "2008"
+      ],
+      "labels": [
+        "B-PER",
+        "I-PER",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O"
+      ],
+      "spans": [
+        "PER: Kyle Orton"
+      ]
+    },
+    {
+      "index": 8774,
+      "text": "North Pacific Coast Railroad ( defunct )",
+      "tokens": [
+        "North",
+        "Pacific",
+        "Coast",
+        "Railroad",
+        "(",
+        "defunct",
+        ")"
+      ],
+      "labels": [
+        "B-ORG",
+        "I-ORG",
+        "I-ORG",
+        "I-ORG",
+        "O",
+        "O",
+        "O"
+      ],
+      "spans": [
+        "ORG: North Pacific Coast Railroad"
+      ]
+    },
+    {
+      "index": 8658,
+      "text": "' '' Wisconsin '' '",
+      "tokens": [
+        "'",
+        "''",
+        "Wisconsin",
+        "''",
+        "'"
+      ],
+      "labels": [
+        "O",
+        "O",
+        "B-LOC",
+        "O",
+        "O"
+      ],
+      "spans": [
+        "LOC: Wisconsin"
+      ]
+    },
+    {
+      "index": 13945,
+      "text": "They were married in 1943 and had five children , and he lived in West Hartford , CT , for the rest of his life .",
+      "tokens": [
+        "They",
+        "were",
+        "married",
+        "in",
+        "1943",
+        "and",
+        "had",
+        "five",
+        "children",
+        ",",
+        "and",
+        "he",
+        "lived",
+        "in",
+        "West",
+        "Hartford",
+        ",",
+        "CT",
+        ",",
+        "for",
+        "the",
+        "rest",
+        "of",
+        "his",
+        "life",
+        "."
+      ],
+      "labels": [
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "B-ORG",
+        "I-ORG",
+        "I-ORG",
+        "I-ORG",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O"
+      ],
+      "spans": [
+        "ORG: West Hartford , CT"
+      ]
+    },
+    {
+      "index": 1883,
+      "text": "She is married to journalist Don Van Natta , Jr . ; they have two children .",
+      "tokens": [
+        "She",
+        "is",
+        "married",
+        "to",
+        "journalist",
+        "Don",
+        "Van",
+        "Natta",
+        ",",
+        "Jr",
+        ".",
+        ";",
+        "they",
+        "have",
+        "two",
+        "children",
+        "."
+      ],
+      "labels": [
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "B-PER",
+        "I-PER",
+        "I-PER",
+        "I-PER",
+        "I-PER",
+        "I-PER",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O"
+      ],
+      "spans": [
+        "PER: Don Van Natta , Jr ."
+      ]
+    },
+    {
+      "index": 4029,
+      "text": "Dabel Brothers Productions",
+      "tokens": [
+        "Dabel",
+        "Brothers",
+        "Productions"
+      ],
+      "labels": [
+        "B-ORG",
+        "I-ORG",
+        "I-ORG"
+      ],
+      "spans": [
+        "ORG: Dabel Brothers Productions"
+      ]
+    },
+    {
+      "index": 17168,
+      "text": "'' Look of Love ''",
+      "tokens": [
+        "''",
+        "Look",
+        "of",
+        "Love",
+        "''"
+      ],
+      "labels": [
+        "O",
+        "B-ORG",
+        "I-ORG",
+        "I-ORG",
+        "O"
+      ],
+      "spans": [
+        "ORG: Look of Love"
+      ]
+    }
+  ],
+  "figures": [
+    "figures/wikiann_en_length_distribution.png",
+    "figures/wikiann_en_qq_plot.png"
+  ],
+  "semantic_classes": [
+    "PER",
+    "ORG",
+    "LOC"
+  ],
+  "pii_coverage": {
+    "person_name": "YES — PER",
+    "organization": "YES — ORG",
+    "geographic_location": "YES — LOC",
+    "home_address": "NO dedicated class",
+    "phone_number": "NO",
+    "email": "NO",
+    "structured_id": "NO",
+    "iban": "NO",
+    "credit_card": "NO",
+    "social_media": "NO"
+  }
+}

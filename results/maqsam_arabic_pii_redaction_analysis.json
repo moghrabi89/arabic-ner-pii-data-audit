@@ -1,0 +1,5 @@
+{
+  "dataset": "Maqsam/ArabicPIIRedaction",
+  "source_status": "NOT_DIRECTLY_ACCESSIBLE",
+  "access_error": "DatasetNotFoundError: Dataset 'Maqsam/ArabicPIIRedaction' doesn't exist on the Hub or cannot be accessed."
+}
