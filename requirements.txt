@@ -1,7 +1,7 @@
-datasets>=3.1,<5
-huggingface_hub>=0.27
-pandas>=2.2
-numpy>=2.0
-scipy>=1.14
-matplotlib>=3.9
-pyarrow>=17
+datasets==4.8.5
+huggingface_hub==1.33.0
+pandas==3.1.1
+numpy==2.4.6
+scipy==1.17.1
+matplotlib==3.11.2
+pyarrow==26.0.1
