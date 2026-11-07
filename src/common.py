@@ -118,3 +118,27 @@ def bio_errors(tags) -> int:
                 errors += 1
         prev = tag
     return errors
+
+
+def bio_errors_labels(tags) -> int:
+    """Count invalid BIO I-tag transitions for string labels."""
+    prev = "O"
+    errors = 0
+    for raw in tags:
+        tag = str(raw)
+        if tag.startswith("I-"):
+            typ = tag[2:]
+            if prev not in ("B-" + typ, "I-" + typ):
+                errors += 1
+        prev = tag
+    return errors
+
+
+def semantic_class_counts(label_counts: dict[str, int]) -> dict[str, int]:
+    """Collapse BIO label counts to semantic classes using entity starts."""
+    out: dict[str, int] = {}
+    for label, count in label_counts.items():
+        if label.startswith("B-"):
+            cls = label[2:]
+            out[cls] = out.get(cls, 0) + int(count)
+    return out
