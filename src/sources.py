@@ -45,6 +45,8 @@ def qualify_sources():
     api = HfApi()
     checks = [
         ("unimelb-nlp/wikiann", "dataset"),
+        ("Elyadata/CV18-NER", "dataset"),
+        ("asas-ai/ANERCorp", "dataset"),
         ("Maqsam/ArabicPIIRedaction", "dataset"),
         ("MutazYoune/Arabic-NER-PII", "model"),
         ("contriqx-Hub/arabic-pii-guardrail", "model"),
