@@ -17,7 +17,7 @@ permissions:
   issues: write
 
 concurrency:
-  group: dataset-audit-${{ github.ref }}
+  group: dataset-audit-v2-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
