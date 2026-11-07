@@ -37,6 +37,28 @@ def _sample_records(records, n=10):
     ids = rng.choice(len(records), size=min(n, len(records)), replace=False)
     return [records[int(i)] for i in ids]
 
+def _bio_anomaly_examples(records, limit=10):
+    examples = []
+    for record in records:
+        prev = "O"
+        for idx, raw in enumerate(record["labels"]):
+            tag = str(raw)
+            if tag.startswith("I-"):
+                typ = tag[2:]
+                if prev not in ("B-" + typ, "I-" + typ):
+                    examples.append({
+                        "text": record["text"],
+                        "token_index": idx,
+                        "token": record["tokens"][idx],
+                        "label": tag,
+                        "previous_label": prev,
+                    })
+                    if len(examples) >= limit:
+                        return examples
+            prev = tag
+    return examples
+
+
 def _pii_coverage(classes):
     cls = {str(x).upper() for x in classes}
     return {
@@ -159,6 +181,9 @@ def analyze_cv18_ner():
     all_tags = [tag for r in all_records for tag in r["labels"]]
     label_counts = Counter(all_tags)
     semantic = semantic_class_counts(dict(label_counts))
+    observed_types = sorted({t.split("-", 1)[1] for t in all_tags if "-" in t})
+    missing_expected_types = sorted(set(WOJOOD_21_TYPES) - set(observed_types))
+    rare_entity_start_types = {k: v for k, v in semantic.items() if v <= 10}
     split_sets, split_stats = {}, {}
     bio_errors = 0
     mixed = 0
@@ -186,6 +211,7 @@ def analyze_cv18_ner():
         }
 
     total_tokens = len(all_tags)
+    rare_entity_start_types = {k: v for k, v in semantic.items() if v <= 50}
     samples_from = split_records.get("train") or next(iter(split_records.values()))
     samples = _sample_records(samples_from)
     combined_texts = [normalize_text(r["text"]) for r in all_records]
@@ -198,11 +224,19 @@ def analyze_cv18_ner():
             "label_counts": dict(label_counts),
             "semantic_entity_start_counts": semantic,
             "semantic_classes": sorted(semantic),
+            "observed_semantic_types_any_bio": observed_types,
+            "expected_wojood_schema_types": WOJOOD_21_TYPES,
+            "missing_expected_types": missing_expected_types,
+            "rare_entity_start_types_le_10": rare_entity_start_types,
+            "entity_start_max_min_ratio": (
+                max(semantic.values()) / min(semantic.values()) if semantic and min(semantic.values()) > 0 else None
+            ),
             "O_token_pct": label_counts.get("O", 0) / max(1, total_tokens) * 100,
             "exact_duplicate_rows": len(combined_texts) - len(set(combined_texts)),
             "annotation_parse_errors": annotation_parse_errors,
             "malformed_physical_rows": malformed_rows,
             "bio_transition_errors": bio_errors,
+            "bio_anomaly_examples": _bio_anomaly_examples(all_records),
             "replacement_character_rows": replacements,
             "mixed_arabic_latin_script_pct": mixed / max(1, len(all_records)) * 100,
         },
@@ -288,9 +322,14 @@ def analyze_anercorp():
             "label_counts": dict(label_counts),
             "semantic_entity_start_counts": semantic,
             "semantic_classes": sorted(semantic),
+            "rare_entity_start_types_le_50": rare_entity_start_types,
+            "entity_start_max_min_ratio": (
+                max(semantic.values()) / min(semantic.values()) if semantic and min(semantic.values()) > 0 else None
+            ),
             "O_token_pct": label_counts.get("O", 0) / max(1, total_tokens) * 100,
             "exact_duplicate_rows": len(combined_texts) - len(set(combined_texts)),
             "bio_transition_errors": bio_total,
+            "bio_anomaly_examples": _bio_anomaly_examples(all_records),
             "mixed_arabic_latin_script_pct": mixed / max(1, len(all_records)) * 100,
         },
         "cross_split_exact_overlap": _cross_split_overlap(split_sets),
