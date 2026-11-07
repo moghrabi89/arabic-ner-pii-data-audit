@@ -21,6 +21,9 @@ Source qualification
 → label and PII coverage
 → quality and leakage checks
 → cross-dataset comparison
+→ CV18-NER raw-annotation audit
+→ ANERCorp documented sentence reconstruction and audit
+→ cross-dataset comparison
 → report generation
 → run manifest and closure status
 
@@ -105,6 +108,31 @@ Across all splits it additionally measures:
 
 The function also draws 10 deterministic random training examples using seed 42. Deterministic sampling means anyone rerunning the repository receives the same examples.
 
+## src/additional_datasets.py
+
+This module extends the original pipeline to the two additional datasets.
+
+### analyze_cv18_ner
+
+- Discovers the public train/dev/test annotation files on Hugging Face.
+- Avoids the broken Hub CSV viewer by reading the raw physical rows directly.
+- Splits each row only at the first delimiter so commas inside Arabic text do not corrupt the annotation.
+- Parses inline BIO annotations into tokens and labels.
+- Measures lengths, Normality, duplicates, split overlap, label counts, class imbalance, BIO anomalies, script mixing, random samples and PII coverage.
+- Compares the observed entity types with the expected 21-type Wojood schema.
+
+The audio files are not required for this text/NER assignment, so the audit intentionally evaluates the annotation-text layer only.
+
+### analyze_anercorp
+
+ANERCorp is published on Hugging Face as word/tag rows rather than sentence rows. The analyzer reconstructs sentences after one-or-more period tokens, matching the standardized CAMeL release documentation, and clearly marks all sentence-length statistics as reconstructed rather than native.
+
+The same quality gates are then applied: Normality, duplicates, split overlap, BIO consistency, class distribution, random samples and PII coverage.
+
+## src/extension_report.py
+
+Builds the comparative extension report for WikiANN Arabic, CV18-NER and ANERCorp. It distinguishes statistical Normality from practical trainability and produces the final training-readiness recommendation.
+
 ## src/sources.py
 
 ### qualify_sources
@@ -155,8 +183,11 @@ It runs:
 2. WikiANN Arabic audit
 3. WikiANN English audit
 4. Maqsam access/audit
-5. final report generation
-6. closure manifest
+5. CV18-NER raw-annotation audit
+6. ANERCorp reconstructed-sentence audit
+7. comparative extension report
+8. integrated final report generation
+9. closure manifest
 
 The final manifest reports PASS or PASS_WITH_EVIDENCE_BOUNDARIES. An inaccessible optional training dataset does not cause the entire assignment to fail, because the limitation itself is a verified finding.
 
