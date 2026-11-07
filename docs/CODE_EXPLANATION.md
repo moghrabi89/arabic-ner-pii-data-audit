@@ -233,15 +233,15 @@ The workflow also uses a concurrency group for the main branch so overlapping au
 
 The repaired repository was revalidated on the current implementation state.
 
-- GitHub Actions run: #8
-- Run ID: 42243655615
-- Validated head SHA: 1f1d3328310d7f493307639d6309b872e96754e2
-- Generated-evidence commit: 48ddde9f17bd9c1e98e4bc8a5edcc8035a59b6fd
-- Artifact ID: 13515953129
-- Artifact SHA-256: 347f67fd5e59e624e5f6c601afd2e1a15d23c3a957df5aaac653d0b4ead3991c
+- GitHub Actions run: #22
+- Run ID: 42357875800
+- Validated head SHA: af0856ae865484220345282884a40bc5890b57ad
+- Generated-evidence commit: 3da9ae9a4108a6243718f78c2bdc8d3a3d8ddb37
+- Artifact ID: 13568795256
+- Artifact SHA-256: d5193be856f192c7780423f27f0690fe736de49bff1c44199f31fbf5bd8fb578
 - Workflow conclusion: SUCCESS
 
-The generated `run_manifest.json` reports `PASS_WITH_EVIDENCE_BOUNDARIES`, and its stored report character count matches the generated final report.
+The generated `run_manifest.json` reports `PASS_WITH_EVIDENCE_BOUNDARIES`, includes both extension datasets, and its stored final-report character count (24,648) matches the generated integrated report.
 
 ## Reproducibility
 
