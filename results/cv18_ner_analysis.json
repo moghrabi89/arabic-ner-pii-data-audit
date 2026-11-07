@@ -1,7 +1,7 @@
 {
   "dataset": "Elyadata/CV18-NER",
   "source_status": "DIRECTLY_MEASURED_RAW_ANNOTATIONS",
-  "loader_note": "Hugging Face viewer currently reports CSV ParserError; audit reads raw annotation files directly and splits each physical row on the first delimiter.",
+  "loader_note": "Hugging Face viewer currently reports CSV ParserError; the audit reads the raw annotation files directly and splits each physical row on the first delimiter so embedded commas remain part of the annotation text.",
   "repo_files": [
     ".gitattributes",
     "README.md",
@@ -370,11 +370,138 @@
       "TIME",
       "WEBSITE"
     ],
+    "observed_semantic_types_any_bio": [
+      "CARDINAL",
+      "CURR",
+      "DATE",
+      "EVENT",
+      "FAC",
+      "GPE",
+      "LANGUAGE",
+      "LAW",
+      "LOC",
+      "MONEY",
+      "NORP",
+      "OCC",
+      "ORDINAL",
+      "ORG",
+      "PERCENT",
+      "PERS",
+      "PRODUCT",
+      "QUANTITY",
+      "TIME",
+      "WEBSITE"
+    ],
+    "expected_wojood_schema_types": [
+      "PERS",
+      "NORP",
+      "OCC",
+      "ORG",
+      "GPE",
+      "LOC",
+      "FAC",
+      "PRODUCT",
+      "EVENT",
+      "DATE",
+      "TIME",
+      "LANGUAGE",
+      "WEBSITE",
+      "LAW",
+      "CARDINAL",
+      "ORDINAL",
+      "PERCENT",
+      "QUANTITY",
+      "UNIT",
+      "MONEY",
+      "CURR"
+    ],
+    "missing_expected_types": [
+      "UNIT"
+    ],
+    "rare_entity_start_types_le_10": {
+      "LAW": 4,
+      "PERCENT": 4,
+      "CURR": 2
+    },
+    "entity_start_max_min_ratio": 3303.0,
     "O_token_pct": 77.71159306470126,
     "exact_duplicate_rows": 883,
+    "exact_duplicate_pct": 7.542495942598445,
     "annotation_parse_errors": 0,
     "malformed_physical_rows": 0,
     "bio_transition_errors": 70,
+    "bio_anomaly_examples": [
+      {
+        "text": "\"كما قال أشجع بن عمر السلمي\"",
+        "token_index": 4,
+        "token": "عمر",
+        "label": "I-PERS",
+        "previous_label": "O"
+      },
+      {
+        "text": "\"الفيلم يخبر قصة السنوات الماضية لبطل حرب النجوم هان سولو و مساعده المشعر تشوباكا\"",
+        "token_index": 7,
+        "token": "النجوم",
+        "label": "I-EVENT",
+        "previous_label": "I-OCC"
+      },
+      {
+        "text": "\"وغالبا ما تعرف جليسة الأطفال المحترفة بأنها جليسة أطفال \"",
+        "token_index": 8,
+        "token": "أطفال",
+        "label": "I-OCC",
+        "previous_label": "O"
+      },
+      {
+        "text": "\" اليابان هي جزء آسيا الشرقي .\"",
+        "token_index": 4,
+        "token": "آسيا",
+        "label": "I-LOC",
+        "previous_label": "O"
+      },
+      {
+        "text": "\". تزداد جمالا يوما بعد يوم \"",
+        "token_index": 4,
+        "token": "بعد",
+        "label": "I-TIME",
+        "previous_label": "B-DATE"
+      },
+      {
+        "text": "\". تزداد جمالا يوما بعد يوم \"",
+        "token_index": 5,
+        "token": "يوم",
+        "label": "I-DATE",
+        "previous_label": "I-TIME"
+      },
+      {
+        "text": "\" أربعة وعشرون قرشا \"",
+        "token_index": 2,
+        "token": "وعشرون",
+        "label": "I-MONEY",
+        "previous_label": "B-CARDINAL"
+      },
+      {
+        "text": "\" وخميلة بكرت سماوة أيكها\"",
+        "token_index": 3,
+        "token": "سماوة",
+        "label": "I-GPE",
+        "previous_label": "O"
+      },
+      {
+        "text": "\"وروى ابن المسيب عن أبي هريرة رضي الله عنه قال\"",
+        "token_index": 2,
+        "token": "المسيب",
+        "label": "I-PERS",
+        "previous_label": "O"
+      },
+      {
+        "text": "\". تزداد الحوادث يوما بعد يوم \"",
+        "token_index": 4,
+        "token": "بعد",
+        "label": "I-TIME",
+        "previous_label": "B-DATE"
+      }
+    ],
     "replacement_character_rows": 0,
     "mixed_arabic_latin_script_pct": 0.11104467412659093
   },

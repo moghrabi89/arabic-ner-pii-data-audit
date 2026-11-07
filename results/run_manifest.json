@@ -31,7 +31,7 @@
     "results/wikiann_en_random_samples.csv"
   ],
   "report_character_count": 13755,
-  "extension_report_character_count": 2403,
+  "extension_report_character_count": 2465,
   "extension_datasets": {
     "Elyadata/CV18-NER": "DIRECTLY_MEASURED_RAW_ANNOTATIONS",
     "asas-ai/ANERCorp": "DIRECTLY_MEASURED_WITH_CANONICAL_SENTENCE_RECONSTRUCTION"

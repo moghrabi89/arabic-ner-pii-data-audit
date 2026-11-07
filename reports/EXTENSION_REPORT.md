@@ -16,7 +16,7 @@ Normality is measured because it was explicitly requested, but a non-Normal sent
 
 ## CV18-NER evidence boundary
 
-Hugging Face viewer currently reports CSV ParserError; audit reads raw annotation files directly and splits each physical row on the first delimiter.
+Hugging Face viewer currently reports CSV ParserError; the audit reads the raw annotation files directly and splits each physical row on the first delimiter so embedded commas remain part of the annotation text.
 
 The audit evaluates the text/NER annotation field only. The source dataset is speech-oriented, but audio-duration analysis is outside the requested text-length pipeline.
 
