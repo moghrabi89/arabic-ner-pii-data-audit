@@ -1,0 +1,605 @@
+{
+  "dataset": "Elyadata/CV18-NER",
+  "source_status": "DIRECTLY_MEASURED_RAW_ANNOTATIONS",
+  "loader_note": "Hugging Face viewer currently reports CSV ParserError; audit reads raw annotation files directly and splits each physical row on the first delimiter.",
+  "repo_files": [
+    ".gitattributes",
+    "README.md",
+    "dev.csv",
+    "test.csv",
+    "train.csv"
+  ],
+  "annotation_files": [
+    "dev.csv",
+    "test.csv",
+    "train.csv"
+  ],
+  "splits": {
+    "validation": {
+      "rows": 2263,
+      "length": {
+        "n": 2263,
+        "mean": 7.047724259832082,
+        "median": 6.0,
+        "std": 2.719485129985014,
+        "min": 3,
+        "p25": 5.0,
+        "p75": 8.0,
+        "p95": 13.0,
+        "p99": 15.0,
+        "max": 23,
+        "skew": 1.142980802079226,
+        "excess_kurtosis": 1.3179448834334435,
+        "iqr_outlier_threshold": 12.5,
+        "iqr_outlier_count": 131,
+        "iqr_outlier_pct": 5.788775961113566
+      },
+      "normality": {
+        "dagostino_k2": 393.5444687864348,
+        "dagostino_p": 3.490634777237294e-86,
+        "shapiro_w": 0.9041834001130502,
+        "shapiro_p": 1.6639716392871607e-35,
+        "shapiro_n": 2263,
+        "anderson_statistic": 68.62909995126711,
+        "anderson_critical_values": [
+          0.561,
+          0.631,
+          0.752,
+          0.873,
+          1.035
+        ],
+        "decision_alpha_0_05": "REJECT_NORMALITY"
+      },
+      "exact_duplicate_rows": 61,
+      "label_counts": {
+        "O": 12394,
+        "B-DATE": 340,
+        "I-DATE": 176,
+        "B-CARDINAL": 124,
+        "B-PERS": 1038,
+        "I-PERS": 212,
+        "B-ORDINAL": 98,
+        "B-NORP": 378,
+        "B-GPE": 296,
+        "B-LANGUAGE": 108,
+        "B-OCC": 133,
+        "I-OCC": 34,
+        "B-TIME": 166,
+        "I-TIME": 76,
+        "B-ORG": 32,
+        "I-ORG": 17,
+        "I-GPE": 31,
+        "B-WEBSITE": 5,
+        "B-LOC": 46,
+        "I-LOC": 29,
+        "B-EVENT": 11,
+        "I-EVENT": 15,
+        "I-NORP": 80,
+        "B-LAW": 2,
+        "I-CARDINAL": 15,
+        "B-MONEY": 12,
+        "I-MONEY": 17,
+        "I-WEBSITE": 1,
+        "B-FAC": 30,
+        "B-PERCENT": 1,
+        "I-PERCENT": 1,
+        "I-ORDINAL": 5,
+        "I-FAC": 16,
+        "B-QUANTITY": 4,
+        "I-QUANTITY": 3,
+        "B-PRODUCT": 1,
+        "I-LAW": 1,
+        "I-PRODUCT": 1
+      },
+      "bio_transition_errors": 14
+    },
+    "test": {
+      "rows": 2325,
+      "length": {
+        "n": 2325,
+        "mean": 6.8133333333333335,
+        "median": 6.0,
+        "std": 2.6507059647011686,
+        "min": 3,
+        "p25": 5.0,
+        "p75": 8.0,
+        "p95": 12.0,
+        "p99": 15.0,
+        "max": 23,
+        "skew": 1.3970124919740283,
+        "excess_kurtosis": 2.582667637653782,
+        "iqr_outlier_threshold": 12.5,
+        "iqr_outlier_count": 105,
+        "iqr_outlier_pct": 4.516129032258064
+      },
+      "normality": {
+        "dagostino_k2": 589.9719414820103,
+        "dagostino_p": 7.748554076826958e-129,
+        "shapiro_w": 0.8827575595493387,
+        "shapiro_p": 8.874836260423107e-39,
+        "shapiro_n": 2325,
+        "anderson_statistic": 83.19684433332759,
+        "anderson_critical_values": [
+          0.561,
+          0.631,
+          0.752,
+          0.873,
+          1.035
+        ],
+        "decision_alpha_0_05": "REJECT_NORMALITY"
+      },
+      "exact_duplicate_rows": 16,
+      "label_counts": {
+        "O": 11999,
+        "B-PERS": 1104,
+        "B-NORP": 288,
+        "B-DATE": 367,
+        "I-DATE": 230,
+        "B-TIME": 148,
+        "I-TIME": 95,
+        "B-OCC": 206,
+        "B-CARDINAL": 123,
+        "B-LANGUAGE": 101,
+        "B-ORDINAL": 86,
+        "I-PERS": 269,
+        "B-GPE": 266,
+        "B-EVENT": 25,
+        "I-OCC": 43,
+        "I-NORP": 90,
+        "B-FAC": 45,
+        "B-LOC": 60,
+        "I-LOC": 37,
+        "I-EVENT": 25,
+        "I-PERCENT": 5,
+        "B-ORG": 65,
+        "I-ORG": 52,
+        "I-GPE": 22,
+        "B-MONEY": 13,
+        "I-MONEY": 16,
+        "I-FAC": 13,
+        "B-PRODUCT": 3,
+        "B-WEBSITE": 8,
+        "B-PERCENT": 2,
+        "B-QUANTITY": 9,
+        "I-QUANTITY": 8,
+        "I-CARDINAL": 15,
+        "B-LAW": 1,
+        "I-LAW": 1,
+        "I-ORDINAL": 1
+      },
+      "bio_transition_errors": 11
+    },
+    "train": {
+      "rows": 7119,
+      "length": {
+        "n": 7119,
+        "mean": 7.1604157887343725,
+        "median": 7.0,
+        "std": 2.73290762601638,
+        "min": 3,
+        "p25": 5.0,
+        "p75": 9.0,
+        "p95": 13.0,
+        "p99": 15.0,
+        "max": 25,
+        "skew": 0.9614723968379248,
+        "excess_kurtosis": 0.8255165800484994,
+        "iqr_outlier_threshold": 15.0,
+        "iqr_outlier_count": 29,
+        "iqr_outlier_pct": 0.40736058435173483
+      },
+      "normality": {
+        "dagostino_k2": 901.0696911909032,
+        "dagostino_p": 2.163727938242891e-196,
+        "shapiro_w": 0.9226439812834876,
+        "shapiro_p": 5.475294190588934e-45,
+        "shapiro_n": 5000,
+        "anderson_statistic": 170.65526802277418,
+        "anderson_critical_values": [
+          0.561,
+          0.631,
+          0.752,
+          0.873,
+          1.035
+        ],
+        "decision_alpha_0_05": "REJECT_NORMALITY"
+      },
+      "exact_duplicate_rows": 545,
+      "label_counts": {
+        "O": 39925,
+        "B-NORP": 1083,
+        "B-PERS": 4464,
+        "B-CARDINAL": 299,
+        "I-NORP": 197,
+        "B-ORG": 145,
+        "B-DATE": 835,
+        "I-PERS": 850,
+        "B-LANGUAGE": 236,
+        "B-LOC": 159,
+        "I-LOC": 42,
+        "B-TIME": 372,
+        "B-GPE": 496,
+        "I-DATE": 341,
+        "B-ORDINAL": 284,
+        "I-TIME": 167,
+        "B-FAC": 68,
+        "I-FAC": 44,
+        "B-OCC": 492,
+        "I-ORG": 66,
+        "B-EVENT": 56,
+        "B-PRODUCT": 28,
+        "I-PRODUCT": 12,
+        "I-GPE": 45,
+        "I-OCC": 96,
+        "B-MONEY": 27,
+        "I-EVENT": 56,
+        "B-QUANTITY": 16,
+        "I-QUANTITY": 12,
+        "I-MONEY": 24,
+        "I-CARDINAL": 12,
+        "B-WEBSITE": 13,
+        "I-LANGUAGE": 1,
+        "B-CURR": 2,
+        "I-ORDINAL": 5,
+        "I-WEBSITE": 2,
+        "B-LAW": 1,
+        "B-PERCENT": 1,
+        "I-PERCENT": 1
+      },
+      "bio_transition_errors": 45
+    }
+  },
+  "combined": {
+    "rows": 11707,
+    "length": {
+      "n": 11707,
+      "mean": 7.06970188775946,
+      "median": 6.0,
+      "std": 2.717289079241742,
+      "min": 3,
+      "p25": 5.0,
+      "p75": 8.0,
+      "p95": 13.0,
+      "p99": 15.0,
+      "max": 25,
+      "skew": 1.076520065649618,
+      "excess_kurtosis": 1.2070971780962685,
+      "iqr_outlier_threshold": 12.5,
+      "iqr_outlier_count": 614,
+      "iqr_outlier_pct": 5.2447253779789875
+    },
+    "normality": {
+      "dagostino_k2": 1840.5602720966447,
+      "dagostino_p": 0.0,
+      "shapiro_w": 0.913070522107189,
+      "shapiro_p": 6.982444909073422e-47,
+      "shapiro_n": 5000,
+      "anderson_statistic": 318.5389493768271,
+      "anderson_critical_values": [
+        0.561,
+        0.631,
+        0.752,
+        0.873,
+        1.035
+      ],
+      "decision_alpha_0_05": "REJECT_NORMALITY"
+    },
+    "label_counts": {
+      "O": 64318,
+      "B-DATE": 1542,
+      "I-DATE": 747,
+      "B-CARDINAL": 546,
+      "B-PERS": 6606,
+      "I-PERS": 1331,
+      "B-ORDINAL": 468,
+      "B-NORP": 1749,
+      "B-GPE": 1058,
+      "B-LANGUAGE": 445,
+      "B-OCC": 831,
+      "I-OCC": 173,
+      "B-TIME": 686,
+      "I-TIME": 338,
+      "B-ORG": 242,
+      "I-ORG": 135,
+      "I-GPE": 98,
+      "B-WEBSITE": 26,
+      "B-LOC": 265,
+      "I-LOC": 108,
+      "B-EVENT": 92,
+      "I-EVENT": 96,
+      "I-NORP": 367,
+      "B-LAW": 4,
+      "I-CARDINAL": 42,
+      "B-MONEY": 52,
+      "I-MONEY": 57,
+      "I-WEBSITE": 3,
+      "B-FAC": 143,
+      "B-PERCENT": 4,
+      "I-PERCENT": 7,
+      "I-ORDINAL": 11,
+      "I-FAC": 73,
+      "B-QUANTITY": 29,
+      "I-QUANTITY": 23,
+      "B-PRODUCT": 32,
+      "I-LAW": 2,
+      "I-PRODUCT": 13,
+      "I-LANGUAGE": 1,
+      "B-CURR": 2
+    },
+    "semantic_entity_start_counts": {
+      "DATE": 1542,
+      "CARDINAL": 546,
+      "PERS": 6606,
+      "ORDINAL": 468,
+      "NORP": 1749,
+      "GPE": 1058,
+      "LANGUAGE": 445,
+      "OCC": 831,
+      "TIME": 686,
+      "ORG": 242,
+      "WEBSITE": 26,
+      "LOC": 265,
+      "EVENT": 92,
+      "LAW": 4,
+      "MONEY": 52,
+      "FAC": 143,
+      "PERCENT": 4,
+      "QUANTITY": 29,
+      "PRODUCT": 32,
+      "CURR": 2
+    },
+    "semantic_classes": [
+      "CARDINAL",
+      "CURR",
+      "DATE",
+      "EVENT",
+      "FAC",
+      "GPE",
+      "LANGUAGE",
+      "LAW",
+      "LOC",
+      "MONEY",
+      "NORP",
+      "OCC",
+      "ORDINAL",
+      "ORG",
+      "PERCENT",
+      "PERS",
+      "PRODUCT",
+      "QUANTITY",
+      "TIME",
+      "WEBSITE"
+    ],
+    "O_token_pct": 77.71159306470126,
+    "exact_duplicate_rows": 883,
+    "annotation_parse_errors": 0,
+    "malformed_physical_rows": 0,
+    "bio_transition_errors": 70,
+    "replacement_character_rows": 0,
+    "mixed_arabic_latin_script_pct": 0.11104467412659093
+  },
+  "cross_split_exact_overlap": {
+    "validation__test": {
+      "exact_sentence_overlap": 38,
+      "pct_of_smaller_unique_split": 1.725703905540418
+    },
+    "validation__train": {
+      "exact_sentence_overlap": 138,
+      "pct_of_smaller_unique_split": 6.267029972752043
+    },
+    "test__train": {
+      "exact_sentence_overlap": 95,
+      "pct_of_smaller_unique_split": 4.11433521004764
+    }
+  },
+  "random_samples": [
+    {
+      "file_name": "common_voice_ar_24097710.mp3",
+      "text": "\" كارول تدرس الإسبانية .\"",
+      "tokens": [
+        "\"",
+        "كارول",
+        "تدرس",
+        "الإسبانية",
+        ".\""
+      ],
+      "labels": [
+        "O",
+        "B-PERS",
+        "O",
+        "B-LANGUAGE",
+        "O"
+      ],
+      "raw_annotation": "\"<كارول B-PERS> تدرس <الإسبانية B-LANGUAGE> .\""
+    },
+    {
+      "file_name": "common_voice_ar_24160112.mp3",
+      "text": "\"وقال الفضل بن سهل \"",
+      "tokens": [
+        "\"وقال",
+        "الفضل",
+        "بن",
+        "سهل",
+        "\""
+      ],
+      "labels": [
+        "O",
+        "B-PERS",
+        "I-PERS",
+        "I-PERS",
+        "O"
+      ],
+      "raw_annotation": "\"وقال <الفضل B-PERS> <بن I-PERS> <سهل I-PERS>\""
+    },
+    {
+      "file_name": "common_voice_ar_24039365.mp3",
+      "text": "\"كم يوما في الأسبوع ؟\"",
+      "tokens": [
+        "\"كم",
+        "يوما",
+        "في",
+        "الأسبوع",
+        "؟\""
+      ],
+      "labels": [
+        "O",
+        "B-DATE",
+        "O",
+        "B-DATE",
+        "O"
+      ],
+      "raw_annotation": "\"كم <يوما B-DATE> في <الأسبوع B-DATE> ؟\""
+    },
+    {
+      "file_name": "common_voice_ar_24149782.mp3",
+      "text": "\"أوافقك الرأي أن الممثل موهوب جدا .\"",
+      "tokens": [
+        "\"أوافقك",
+        "الرأي",
+        "أن",
+        "الممثل",
+        "موهوب",
+        "جدا",
+        ".\""
+      ],
+      "labels": [
+        "O",
+        "O",
+        "O",
+        "B-OCC",
+        "O",
+        "O",
+        "O"
+      ],
+      "raw_annotation": "\"أوافقك الرأي أن <الممثل B-OCC> موهوب جدا .\""
+    },
+    {
+      "file_name": "common_voice_ar_24171585.mp3",
+      "text": "\" سامي يعيش حياة رائعة .\"",
+      "tokens": [
+        "\"",
+        "سامي",
+        "يعيش",
+        "حياة",
+        "رائعة",
+        ".\""
+      ],
+      "labels": [
+        "O",
+        "B-PERS",
+        "O",
+        "O",
+        "O",
+        "O"
+      ],
+      "raw_annotation": "\"<سامي B-PERS> يعيش حياة رائعة .\""
+    },
+    {
+      "file_name": "common_voice_ar_24170400.mp3",
+      "text": "\"جعل هذا سامي يشعر بالسعادة .\"",
+      "tokens": [
+        "\"جعل",
+        "هذا",
+        "سامي",
+        "يشعر",
+        "بالسعادة",
+        ".\""
+      ],
+      "labels": [
+        "O",
+        "O",
+        "B-PERS",
+        "O",
+        "O",
+        "O"
+      ],
+      "raw_annotation": "\"جعل هذا <سامي B-PERS> يشعر بالسعادة .\""
+    },
+    {
+      "file_name": "common_voice_ar_24088533.mp3",
+      "text": "\"كذبت عاد المرسلين \"",
+      "tokens": [
+        "\"كذبت",
+        "عاد",
+        "المرسلين",
+        "\""
+      ],
+      "labels": [
+        "O",
+        "O",
+        "B-NORP",
+        "O"
+      ],
+      "raw_annotation": "\"كذبت عاد <المرسلين B-NORP>\""
+    },
+    {
+      "file_name": "common_voice_ar_24055589.mp3",
+      "text": "\"نسيت عنوان توم .\"",
+      "tokens": [
+        "\"نسيت",
+        "عنوان",
+        "توم",
+        ".\""
+      ],
+      "labels": [
+        "O",
+        "O",
+        "B-PERS",
+        "O"
+      ],
+      "raw_annotation": "\"نسيت عنوان <توم B-PERS> .\""
+    },
+    {
+      "file_name": "common_voice_ar_24161262.mp3",
+      "text": "\"وصدق أبو عثمان \"",
+      "tokens": [
+        "\"وصدق",
+        "أبو",
+        "عثمان",
+        "\""
+      ],
+      "labels": [
+        "O",
+        "B-PERS",
+        "I-PERS",
+        "O"
+      ],
+      "raw_annotation": "\"وصدق <أبو B-PERS> <عثمان I-PERS>\""
+    },
+    {
+      "file_name": "common_voice_ar_24092826.mp3",
+      "text": "\"في اليوم التالي \"",
+      "tokens": [
+        "\"في",
+        "اليوم",
+        "التالي",
+        "\""
+      ],
+      "labels": [
+        "O",
+        "B-DATE",
+        "I-DATE",
+        "O"
+      ],
+      "raw_annotation": "\"في <اليوم B-DATE> <التالي I-DATE>\""
+    }
+  ],
+  "figures": [
+    "figures/cv18_ner_length_distribution.png",
+    "figures/cv18_ner_qq_plot.png"
+  ],
+  "pii_coverage": {
+    "person_name": true,
+    "organization": true,
+    "geographic_location": true,
+    "home_address": false,
+    "phone_number": false,
+    "email": false,
+    "structured_id": false,
+    "iban": false,
+    "credit_card": false,
+    "social_media": false,
+    "date_or_time": true
+  },
+  "scope_note": "Text/NER annotations audited; audio-duration distribution is outside the requested text-length pipeline."
+}

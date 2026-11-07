@@ -1,0 +1,11 @@
+file_name,text,labels
+common_voice_ar_24097710.mp3,""" كارول تدرس الإسبانية .""",O B-PERS O B-LANGUAGE O
+common_voice_ar_24160112.mp3,"""وقال الفضل بن سهل """,O B-PERS I-PERS I-PERS O
+common_voice_ar_24039365.mp3,"""كم يوما في الأسبوع ؟""",O B-DATE O B-DATE O
+common_voice_ar_24149782.mp3,"""أوافقك الرأي أن الممثل موهوب جدا .""",O O O B-OCC O O O
+common_voice_ar_24171585.mp3,""" سامي يعيش حياة رائعة .""",O B-PERS O O O O
+common_voice_ar_24170400.mp3,"""جعل هذا سامي يشعر بالسعادة .""",O O B-PERS O O O
+common_voice_ar_24088533.mp3,"""كذبت عاد المرسلين """,O O B-NORP O
+common_voice_ar_24055589.mp3,"""نسيت عنوان توم .""",O O B-PERS O
+common_voice_ar_24161262.mp3,"""وصدق أبو عثمان """,O B-PERS I-PERS O
+common_voice_ar_24092826.mp3,"""في اليوم التالي """,O B-DATE I-DATE O

@@ -6,12 +6,22 @@
     "contriqx-Hub/arabic-pii-guardrail is a model link without a directly supplied raw training dataset."
   ],
   "generated_files": [
+    "figures/anercorp_length_distribution.png",
+    "figures/anercorp_qq_plot.png",
+    "figures/cv18_ner_length_distribution.png",
+    "figures/cv18_ner_qq_plot.png",
     "figures/wikiann_ar_length_distribution.png",
     "figures/wikiann_ar_qq_plot.png",
     "figures/wikiann_en_length_distribution.png",
     "figures/wikiann_en_qq_plot.png",
+    "reports/EXTENSION_REPORT.md",
     "reports/FINAL_REPORT.md",
+    "results/anercorp_analysis.json",
+    "results/anercorp_random_samples.csv",
+    "results/cv18_ner_analysis.json",
+    "results/cv18_ner_random_samples.csv",
     "results/dataset_comparison.csv",
+    "results/dataset_comparison_extended.csv",
     "results/maqsam_arabic_pii_redaction_analysis.json",
     "results/run_manifest.json",
     "results/source_qualification.json",
@@ -20,5 +30,10 @@
     "results/wikiann_en_analysis.json",
     "results/wikiann_en_random_samples.csv"
   ],
-  "report_character_count": 13755
+  "report_character_count": 13755,
+  "extension_report_character_count": 2403,
+  "extension_datasets": {
+    "Elyadata/CV18-NER": "DIRECTLY_MEASURED_RAW_ANNOTATIONS",
+    "asas-ai/ANERCorp": "DIRECTLY_MEASURED_WITH_CANONICAL_SENTENCE_RECONSTRUCTION"
+  }
 }
