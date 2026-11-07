@@ -20,6 +20,8 @@ def main():
     anercorp = analyze_anercorp()
     report = build_report(source_q, wiki_ar, wiki_en, maqsam)
     extension_report = build_extension_report(wiki_ar, cv18, anercorp)
+    integrated_report = report + "\n\n---\n\n" + extension_report
+    (REPORTS / "FINAL_REPORT.md").write_text(integrated_report, encoding="utf-8")
 
     generated = []
     for parent in (RESULTS, FIGURES, REPORTS):
@@ -43,7 +45,8 @@ def main():
         "status": status,
         "evidence_boundaries": evidence_boundaries,
         "generated_files": sorted(generated),
-        "report_character_count": len(report),
+        "report_character_count": len(integrated_report),
+        "base_report_character_count": len(report),
         "extension_report_character_count": len(extension_report),
         "extension_datasets": {
             "Elyadata/CV18-NER": cv18.get("source_status"),
