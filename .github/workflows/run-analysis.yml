@@ -103,3 +103,5 @@ jobs:
         run: exit 1
 
 # Final canonical validation trigger
+
+# Extension canonical validation trigger
